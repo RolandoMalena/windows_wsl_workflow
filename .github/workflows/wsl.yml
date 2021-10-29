@@ -1,0 +1,13 @@
+name: WSL
+
+on:
+  workflow_dispatch:
+
+jobs:
+  wsl:
+    runs-on: windows-latest
+    steps:
+      - name: No name
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
