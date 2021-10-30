@@ -26,6 +26,7 @@ jobs:
           sh get-docker.sh
           service docker start
           dockerd
+          ls -la /var/run/docker.sock
           docker run hello-world
 
       - shell: wsl-bash {0}
