@@ -24,14 +24,14 @@ jobs:
         run: |
           curl -fsSL https://get.docker.com -o get-docker.sh
           sh get-docker.sh
-          service docker start
+          systemctl start docker
 
       - shell: wsl-bash {0}
         name: Pull Redis Image
         run: |
-            sudo docker pull redis
+            docker pull redis
       
       - shell: wsl-bash {0}
         name: Pull Postgres Image
         run: |
-            sudo docker pull postgres
+            docker pull postgres
