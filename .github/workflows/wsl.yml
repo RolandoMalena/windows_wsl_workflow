@@ -29,9 +29,9 @@ jobs:
       - shell: wsl-bash {0}
         name: Pull Redis Image
         run: |
-            docker pull redis
+            sudo docker pull redis
       
       - shell: wsl-bash {0}
         name: Pull Postgres Image
         run: |
-            docker pull postgres
+            sudo docker pull postgres
