@@ -23,5 +23,11 @@ jobs:
           wsl-shell-user: rolando
 
       - shell: wsl-bash {0}
+        name: Pull Redis Image
         run: |
-            lsb_release -a
+            docker pull redis
+      
+      - shell: wsl-bash {0}
+        name: Pull Postgres Image
+        run: |
+            docker pull postgres
