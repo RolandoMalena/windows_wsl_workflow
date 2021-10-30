@@ -11,7 +11,17 @@ jobs:
   wsl:
     runs-on: windows-latest
     steps:
-      - name: No name
+      - name: Setup WSL
+        uses: Vampire/setup-wsl@v1.1.0
+        with:
+          distribution: 'Ubuntu-20.04'
+          use-cache: 'true'
+          set-as-default: 'true'
+          additional-packages:
+            docker
+            docker-compose
+          wsl-shell-user: rolando
+
+      - shell: wsl-bash {0}
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+            lsb_release -a
