@@ -24,6 +24,7 @@ jobs:
         run: |
           curl -fsSL https://get.docker.com -o get-docker.sh
           sh get-docker.sh
+          echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc && source ~/.bashrc
 
       - shell: wsl-bash {0}
         name: Pull Redis Image
