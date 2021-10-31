@@ -14,7 +14,6 @@ jobs:
       - name: Setup WSL
         uses: Vampire/setup-wsl@v1.1.0
         with:
-          distribution: 'Ubuntu-20.04'
           use-cache: 'true'
           set-as-default: 'true'
           wsl-shell-user: root
@@ -24,8 +23,6 @@ jobs:
         run: |
           curl -fsSL https://get.docker.com -o get-docker.sh
           sh get-docker.sh
-          dockerd-rootless-setuptool.sh install
-          echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc && source ~/.bashrc
 
       - shell: wsl-bash {0}
         name: Pull Redis Image
