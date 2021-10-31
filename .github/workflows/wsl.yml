@@ -69,7 +69,7 @@ jobs:
       - name: Build Client
         run: |
           cd windows_wsl_workflow/HelloWord.Client
-          dotnet build
+          dotnet build --no-restore
       
       - name: Run Client
         run: |
