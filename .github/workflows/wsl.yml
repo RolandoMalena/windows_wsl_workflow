@@ -66,11 +66,11 @@ jobs:
       
       - name: Build Client App
         run: |
-          cd windows_wsl_workflow/HelloWord.Client
+          cd HelloWord.Client
           msbuild HelloWord.Client.sln /t:Restore /p:Configuration=Release
       
       - name: Run Client App
         run: |
-          cd windows_wsl_workflow/HelloWord.Client
+          cd HelloWord.Client
           ls
           ./HelloWord.Client.exe
