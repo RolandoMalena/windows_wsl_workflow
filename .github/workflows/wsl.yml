@@ -24,9 +24,6 @@ jobs:
         run: |
           curl -fsSL https://get.docker.com -o get-docker.sh
           sh get-docker.sh
-          dockerd
-          ls -la /var/run/docker.sock
-          docker run hello-world
 
       - shell: wsl-bash {0}
         name: Pull Redis Image
