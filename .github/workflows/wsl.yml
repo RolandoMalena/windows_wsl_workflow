@@ -11,9 +11,6 @@ jobs:
   wsl:
     runs-on: windows-latest
     steps:
-      - name: Check WSL version
-        run: wsl -l -v
-        
       - name: Setup WSL
         uses: Vampire/setup-wsl@v1.1.0
         with:
