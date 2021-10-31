@@ -70,7 +70,8 @@ jobs:
           msbuild HelloWord.Client.sln /p:Configuration=Release
       
       - name: Run Client App
+        env:
+          BaseURL: "https://localhost:5000"
         run: |
-          cd HelloWord.Client
-          ls
-          ./bin/Release/HelloWord.Client.exe
+          cd HelloWord.Client/bin/Release
+          ./HelloWord.Client.exe
