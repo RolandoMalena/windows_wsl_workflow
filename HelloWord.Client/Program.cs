@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -14,6 +15,15 @@ namespace HelloWord.Client
         baseUrl = Environment.GetEnvironmentVariable("BaseURL");
       else
         baseUrl = string.Join(" ", args);
+
+      #pragma warning disable CA5359 // Do Not Disable Certificate Validation
+      ServicePointManager.ServerCertificateValidationCallback = (s, certificate, chain, sslPolicyErrors) =>
+      {
+        return true;
+      };
+      #pragma warning restore CA5359 // Do Not Disable Certificate Validation
+      ServicePointManager.Expect100Continue = true;
+      ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
       HttpClient client = new HttpClient();
       var result = await client.GetAsync(baseUrl);
