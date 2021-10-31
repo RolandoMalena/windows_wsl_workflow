@@ -11,9 +11,6 @@ jobs:
   wsl:
     runs-on: windows-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        
       - name: Install .NET Core
         uses: actions/setup-dotnet@v1
         with:
@@ -69,12 +66,10 @@ jobs:
           ls
           dotnet restore
           
-      - shell: wsl-bash {0}
-        name: Build Client
+      - name: Build Client
         run: |
           dotnet build
       
-      - shell: wsl-bash {0}
-        name: Run Client
+      - name: Run Client
         run: |
           dotnet run
