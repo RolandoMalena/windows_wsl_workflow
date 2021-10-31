@@ -34,14 +34,21 @@ jobs:
         name: Clone Repository
         run: |
           git clone https://github.com/RolandoMalena/windows_wsl_workflow.git
+      
+      - shell: wsl-bash {0}
+        name: Restore Dependencies
+        run: |
+          cd windows_wsl_workflow/HelloWorld.API
+          dotnet restore
           
       - shell: wsl-bash {0}
-        name: Print Files
+        name: Build API
+        run: |
+          cd windows_wsl_workflow/HelloWorld.API
+          dotnet build
+      
+      - shell: wsl-bash {0}
+        name: Run API
         run: |
           cd windows_wsl_workflow/HelloWorld.API
           dotnet run
-      
-      - shell: wsl-bash {0}
-        name: Print Files
-        run: |
-          ls
