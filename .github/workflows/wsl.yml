@@ -11,6 +11,17 @@ jobs:
   wsl:
     runs-on: windows-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1
+
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.0.2
+      
       - name: Setup WSL
         uses: Vampire/setup-wsl@v1.1.0
         with:
@@ -36,7 +47,7 @@ jobs:
           git clone https://github.com/RolandoMalena/windows_wsl_workflow.git
       
       - shell: wsl-bash {0}
-        name: Restore Dependencies
+        name: Restore API Dependencies
         run: |
           cd windows_wsl_workflow/HelloWorld.API
           dotnet restore
@@ -53,6 +64,19 @@ jobs:
           cd windows_wsl_workflow/HelloWorld.API
           screen -d -m -S SERVER bash -c 'dotnet run'
       
-      - name: Ping API
+      - name: Restore Client Dependencies
         run: |
-          Invoke-WebRequest -URI http://localhost:5000
+          cd HelloWorld.Client
+          dotnet restore
+          
+      - shell: wsl-bash {0}
+        name: Build Client
+        run: |
+          cd HelloWorld.Client
+          dotnet build
+      
+      - shell: wsl-bash {0}
+        name: Run Client
+        run: |
+          cd HelloWorld.Client
+          dotnet run
