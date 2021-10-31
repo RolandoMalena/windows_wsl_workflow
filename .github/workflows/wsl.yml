@@ -61,17 +61,12 @@ jobs:
           cd windows_wsl_workflow/HelloWorld.API
           screen -d -m -S SERVER bash -c 'dotnet run'
       
-      - name: Restore Client Dependencies
+      - name: Build Client App
         run: |
           cd windows_wsl_workflow/HelloWord.Client
           msbuild HelloWord.Client.sln /t:Restore /p:Configuration=Release
-          
-      - name: Build Client
-        run: |
-          cd windows_wsl_workflow/HelloWord.Client
-          msbuild HelloWord.Client.sln /p:Configuration=Release
       
-      - name: Run Client
+      - name: Run Client App
         run: |
           cd windows_wsl_workflow/HelloWord.Client/bin/Release/netcoreapp3.1
           ./HelloWord.Client.exe
