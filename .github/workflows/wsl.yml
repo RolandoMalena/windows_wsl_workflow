@@ -64,14 +64,14 @@ jobs:
       - name: Restore Client Dependencies
         run: |
           cd windows_wsl_workflow/HelloWord.Client
-          dotnet restore HelloWord.Client.csproj
+          msbuild HelloWord.Client.sln /t:Restore /p:Configuration=Release
           
       - name: Build Client
         run: |
           cd windows_wsl_workflow/HelloWord.Client
-          dotnet build --no-restore
+          msbuild HelloWord.Client.sln /p:Configuration=Release
       
       - name: Run Client
         run: |
-          cd windows_wsl_workflow/HelloWord.Client
-          dotnet run
+          cd windows_wsl_workflow/HelloWord.Client/bin/Release/netcoreapp3.1
+          ./HelloWord.Client.exe
