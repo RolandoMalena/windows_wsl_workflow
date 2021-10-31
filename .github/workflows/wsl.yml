@@ -68,5 +68,6 @@ jobs:
       
       - name: Run Client App
         run: |
-          cd windows_wsl_workflow/HelloWord.Client/bin/Release/netcoreapp3.1
+          cd windows_wsl_workflow/HelloWord.Client/bin
+          ls
           ./HelloWord.Client.exe
