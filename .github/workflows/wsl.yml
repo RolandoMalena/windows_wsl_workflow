@@ -64,7 +64,7 @@ jobs:
       - name: Restore Client Dependencies
         run: |
           cd windows_wsl_workflow/HelloWord.Client
-          dotnet restore
+          dotnet restore HelloWord.Client.csproj
           
       - name: Build Client
         run: |
