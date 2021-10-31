@@ -11,14 +11,12 @@ jobs:
   wsl:
     runs-on: windows-latest
     steps:
-      - name: Install .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1
-
+      - name: Checkout
+        uses: actions/checkout@v2
+      
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1.0.2
-      
+
       - name: Setup WSL
         uses: Vampire/setup-wsl@v1.1.0
         with:
@@ -37,36 +35,38 @@ jobs:
           apt-get install -y apt-transport-https
           apt-get update
           apt-get install -y dotnet-sdk-3.1
-
-      - shell: wsl-bash {0}
-        name: Clone Repository
-        run: |
-          git clone https://github.com/RolandoMalena/windows_wsl_workflow.git
       
       - shell: wsl-bash {0}
         name: Restore API Dependencies
         run: |
-          cd windows_wsl_workflow/HelloWorld.API
+          cd HelloWorld.API
           dotnet restore
           
       - shell: wsl-bash {0}
         name: Build API
         run: |
-          cd windows_wsl_workflow/HelloWorld.API
+          cd HelloWorld.API
           dotnet build
       
       - shell: wsl-bash {0}
         name: Run API
         run: |
-          cd windows_wsl_workflow/HelloWorld.API
+          cd HelloWorld.API
           screen -d -m -S SERVER bash -c 'dotnet run'
       
+      - name: Restore Client App Dependencies
+        run: |
+          cd HelloWord.Client
+          nuget restore HelloWord.Client.sln
+
       - name: Build Client App
         run: |
-          cd windows_wsl_workflow/HelloWord.Client
-          msbuild HelloWord.Client.sln /t:Restore /p:Configuration=Release
+          cd HelloWord.Client
+          msbuild HelloWord.Client.sln /p:Configuration=Release
       
       - name: Run Client App
+        env:
+          BaseURL: "https://localhost:5001"
         run: |
-          cd windows_wsl_workflow/HelloWord.Client/bin/Release/netcoreapp3.1
+          cd HelloWord.Client/bin/Release
           ./HelloWord.Client.exe
