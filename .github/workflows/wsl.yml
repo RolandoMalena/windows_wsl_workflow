@@ -67,10 +67,12 @@ jobs:
       - name: Build Client App
         run: |
           cd HelloWord.Client
+          dotnet restore
+          dotnet build
           msbuild HelloWord.Client.sln /t:Restore /p:Configuration=Release
       
       - name: Run Client App
         run: |
           cd HelloWord.Client
           ls
-          ./HelloWord.Client.exe
+          ./bin/Release/HelloWord.Client.exe
