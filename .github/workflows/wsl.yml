@@ -20,20 +20,11 @@ jobs:
           wsl-shell-user: root
 
       - shell: wsl-bash {0}
-        name: Install Docker
+        name: Clone Repository
         run: |
-          curl -fsSL https://get.docker.com -o get-docker.sh
-          sh get-docker.sh
-      
-      - name: Check WSL version
-        run: wsl -l -v
-
-      - shell: wsl-bash {0}
-        name: Pull Redis Image
-        run: |
-            docker pull redis
+          git clone https://github.com/RolandoMalena/windows_wsl_workflow.git
       
       - shell: wsl-bash {0}
-        name: Pull Postgres Image
+        name: Print Files
         run: |
-            docker pull postgres
+          ls
