@@ -66,6 +66,7 @@ jobs:
       
       - name: Restore Client Dependencies
         run: |
+          ls
           dotnet restore
           
       - shell: wsl-bash {0}
