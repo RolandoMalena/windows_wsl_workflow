@@ -66,17 +66,14 @@ jobs:
       
       - name: Restore Client Dependencies
         run: |
-          cd HelloWorld.Client
           dotnet restore
           
       - shell: wsl-bash {0}
         name: Build Client
         run: |
-          cd HelloWorld.Client
           dotnet build
       
       - shell: wsl-bash {0}
         name: Run Client
         run: |
-          cd HelloWorld.Client
           dotnet run
