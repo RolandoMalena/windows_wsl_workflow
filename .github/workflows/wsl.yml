@@ -55,4 +55,4 @@ jobs:
       
       - name: Ping API
         run: |
-          Invoke-WebRequest -URI localhost:5000
+          Invoke-WebRequest -URI http://localhost:5000
