@@ -63,6 +63,7 @@ jobs:
       
       - name: Restore Client Dependencies
         run: |
+          cd windows_wsl_workflow
           ls
           dotnet restore
           
