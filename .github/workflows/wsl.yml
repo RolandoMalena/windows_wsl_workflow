@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Client
-          path: HelloWord.Client/bin/Release
+          path: HelloWord.Client/bin/Release/*.*
     
   build_api:
     runs-on: ubuntu-20.04
@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: API
-          path: HelloWord.API
+          path: HelloWord.API/bin/Release/netcoreapp3.1/*.*
 
   integration_test:
     runs-on: windows-2019
