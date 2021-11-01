@@ -49,7 +49,7 @@ jobs:
           cd HelloWorld.API
           dotnet restore
 
-      - name: Build
+      - name: Build API
         run: |
           cd HelloWorld.API
           dotnet build --no-restore --configuration Release
@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: API
-          path: HelloWord.API/bin/Release/netcoreapp3.1
+          path: HelloWord.API
 
   integration_test:
     runs-on: windows-2019
