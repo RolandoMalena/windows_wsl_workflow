@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Client
-          path: HelloWord.Client/bin/Release/*.*
+          path: HelloWord.Client/*.*
     
   build_api:
     runs-on: ubuntu-20.04
