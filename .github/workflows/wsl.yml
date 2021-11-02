@@ -29,6 +29,7 @@ jobs:
 
       - name: Prepare Files for Upload
         run: |
+          ls
           mkdir ClientApp
           mv * .\ClientApp\
       
