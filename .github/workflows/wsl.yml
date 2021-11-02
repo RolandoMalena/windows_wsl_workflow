@@ -55,10 +55,10 @@ jobs:
           dotnet build --no-restore --configuration Release
       
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.2.4
         with:
-          name: API
-          path: HelloWord.API/*.*
+          name: 'RemoteFileManagerFiles'
+          path: 'HelloWord.API/*'
 
   integration_test:
     runs-on: windows-2019
