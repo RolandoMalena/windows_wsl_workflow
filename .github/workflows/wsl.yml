@@ -26,12 +26,17 @@ jobs:
         run: |
           cd HelloWord.Client
           msbuild HelloWord.Client.sln /p:Configuration=Release
+
+      - name: Prepare Files for Upload
+        run: |
+          mkdir API
+          mv HelloWorld.Client/bin/Release/* ClientApp
       
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: Client
-          path: HelloWord.Client/*.*
+          path: 'ClientApp/*'
     
   build_api:
     runs-on: ubuntu-20.04
