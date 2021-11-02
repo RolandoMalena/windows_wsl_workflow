@@ -29,8 +29,8 @@ jobs:
 
       - name: Prepare Files for Upload
         run: |
-          mkdir API
-          mv HelloWorld.Client/bin/Release/* ClientApp
+          mkdir ClientApp
+          mv ./HelloWorld.Client/bin/Release/* ClientApp
       
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v2.2.4
