@@ -30,7 +30,8 @@ jobs:
       - name: Prepare Files for Upload
         run: |
           mkdir ClientApp
-          mv ".\HelloWorld.Client\bin\Release\*" ".\ClientApp\"
+          cd HelloWord.Client/bin/Release
+          mv * ..\..\..\ClientApp\
       
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v2.2.4
