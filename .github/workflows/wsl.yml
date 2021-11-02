@@ -57,7 +57,7 @@ jobs:
       - name: Prepare Files for Upload
         run: |
           mkdir API
-          mv /HelloWorld.API/bin/Release/netcoreapp3.1/*.* API
+          mv HelloWorld.API/bin/Release/netcoreapp3.1/* API
       
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v2.2.4
