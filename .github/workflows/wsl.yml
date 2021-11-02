@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: API
-          path: 'HelloWorld.API\bin\Release\netcoreapp3.1\*'
+          path: '/HelloWorld.API/bin/Release/netcoreapp3.1/*'
 
   integration_test:
     runs-on: windows-2019
