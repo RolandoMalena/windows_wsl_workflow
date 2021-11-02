@@ -79,11 +79,13 @@ jobs:
         uses: actions/download-artifact@v2.0.10
         with:
           name: Client
+          path: Client
 
       - name: Download API Build Artifact
         uses: actions/download-artifact@v2.0.10
         with:
           name: API
+          path: API
 
       - name: Setup WSL
         uses: Vampire/setup-wsl@v1.1.0
@@ -93,23 +95,22 @@ jobs:
           set-as-default: 'true'
           wsl-shell-user: root
 
-#       - shell: wsl-bash {0}
-#         name: Install .NET Runtime
-#         run: |
-#           wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-#           dpkg -i packages-microsoft-prod.deb
-#           rm packages-microsoft-prod.deb
-#           apt-get update
-#           apt-get install -y apt-transport-https
-#           apt-get update
-#           apt-get install -y dotnet-sdk-3.1
+      - shell: wsl-bash {0}
+        name: Install .NET Runtime
+        run: |
+          wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+          dpkg -i packages-microsoft-prod.deb
+          rm packages-microsoft-prod.deb
+          apt-get update
+          apt-get install -y apt-transport-https
+          apt-get update
+          apt-get install -y dotnet-sdk-3.1
       
       - shell: wsl-bash {0}
         name: Run API
         run: |
-          ls
           cd API
-          screen -d -m -S SERVER bash -c 'dotnet run'
+          screen -d -m -S SERVER bash -c 'dotnet HelloWorld.API.dll'
       
       - name: Run Client App
         env:
