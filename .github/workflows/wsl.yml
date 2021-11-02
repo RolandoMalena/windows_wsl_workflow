@@ -57,8 +57,8 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: 'RemoteFileManagerFiles'
-          path: 'HelloWord.API/*'
+          name: API
+          path: '*'
 
   integration_test:
     runs-on: windows-2019
