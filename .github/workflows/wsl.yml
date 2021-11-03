@@ -117,5 +117,4 @@ jobs:
           BaseURL: "http://localhost:5000"
         run: |
           cd Client
-          Start-Sleep -s 30
           ./HelloWord.Client.exe
