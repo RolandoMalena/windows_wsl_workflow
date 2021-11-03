@@ -11,6 +11,10 @@ jobs:
   build:
     runs-on: windows-2019
     steps:
+      - name: Test
+        run: |
+          Get-Content -Path C:\ProgramData\Docker\config\daemon.json
+          
       - name: Setup WSL
         uses: Vampire/setup-wsl@v1.1.0
         with:
