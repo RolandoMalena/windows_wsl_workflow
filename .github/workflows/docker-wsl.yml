@@ -11,9 +11,10 @@ jobs:
   build:
     runs-on: windows-2019
     steps:
-      - name: Test
+      - name: Expose Docker Daemon
+        shell: cmd
         run: |
-          Get-Content -Path D:\ProgramData\Docker\config\daemon.json
+          sc config docker binpath= "\"C:\Program Files\docker\dockerd.exe\" --run-service -H tcp://0.0.0.0:2375"
           
       - name: Setup WSL
         uses: Vampire/setup-wsl@v1.1.0
