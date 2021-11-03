@@ -114,7 +114,7 @@ jobs:
       
       - name: Run Client App
         env:
-          BaseURL: "https://localhost:5001"
+          BaseURL: "http://localhost:5000"
         run: |
           cd Client
           Start-Sleep -s 30
