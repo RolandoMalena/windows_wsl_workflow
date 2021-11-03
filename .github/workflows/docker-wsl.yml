@@ -31,11 +31,7 @@ jobs:
           sh get-docker.sh
           
       - shell: wsl-bash {0}
-        name: Setup Docker Daemon
-        run: |
-          echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc
-          
-      - shell: wsl-bash {0}
         name: Test Docker
         run: |
+          export DOCKER_HOST=tcp://localhost:2375
           docker pull redis
