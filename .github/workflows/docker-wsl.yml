@@ -1,0 +1,16 @@
+name: Docker_CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+      - name: Test
+        run: |
+          docker images
