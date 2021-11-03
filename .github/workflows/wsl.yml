@@ -110,7 +110,7 @@ jobs:
         name: Run API
         run: |
           cd API
-          dotnet HelloWorld.API.dll
+          screen -d -m -S SERVER bash -c 'dotnet HelloWorld.API.dll'
       
       - name: Run Client App
         env:
