@@ -14,7 +14,7 @@ jobs:
       - name: Expose Docker Daemon
         shell: cmd
         run: |
-          sc config docker binpath= "\"C:\Program Files\docker\dockerd.exe\" --run-service -H tcp://0.0.0.0:2375"
+          dockerd -H tcp://0.0.0.0:2375
           
       - name: Setup WSL
         uses: Vampire/setup-wsl@v1.1.0
