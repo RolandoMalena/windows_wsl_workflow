@@ -12,9 +12,9 @@ jobs:
     runs-on: windows-2019
     steps:
       - name: Expose Docker Daemon
+        shell: cmd
         run: |
-          Stop-Process -Name docker -Force
-          Stop-Process -Name dockerd -Force
+          taskkill /IM "docker"
           dockerd -H tcp://localhost:2375
           
       - name: Setup WSL
