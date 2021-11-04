@@ -13,7 +13,9 @@ jobs:
     steps:
       - name: Expose Docker Daemon
         run: |
-          (Get-Process -Name dockerd).CloseMainWindow()
+          $P = Get-Process -Name dockerd
+          $P.CloseMainWindow()
+          $P.WaitForExit()
           dockerd -H tcp://localhost:2375
           
       - name: Setup WSL
