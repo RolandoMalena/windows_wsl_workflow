@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Expose Docker Daemon
         run: |
-          Stop-Process -Name notepad
+          Stop-Process -Name dockerd
           dockerd -H tcp://localhost:2375
           
       - name: Setup WSL
