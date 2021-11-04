@@ -14,7 +14,7 @@ jobs:
       - name: Expose Docker Daemon
         shell: cmd
         run: |
-          taskkill /IM "docker"
+          taskkill /IM "dockerd"
           dockerd -H tcp://localhost:2375
           
       - name: Setup WSL
