@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Expose Docker Daemon
         run: |
-          docker ps -a
+          Stop-Process -Name docker -Force
           Stop-Process -Name dockerd -Force
           dockerd -H tcp://localhost:2375
           
