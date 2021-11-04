@@ -12,9 +12,8 @@ jobs:
     runs-on: windows-2019
     steps:
       - name: Expose Docker Daemon
-        shell: cmd
         run: |
-          taskkill /IM "dockerd" /F
+          (Get-Process -Name dockerd).CloseMainWindow()
           dockerd -H tcp://localhost:2375
           
       - name: Setup WSL
