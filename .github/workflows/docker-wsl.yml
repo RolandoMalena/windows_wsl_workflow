@@ -14,6 +14,7 @@ jobs:
       - name: Expose Docker Daemon
         run: |
           Stop-Process -Name dockerd -Force
+          dockerd --debug -H tcp://127.0.0.1:2375
           Start-Job -ScriptBlock{dockerd --debug -H tcp://127.0.0.1:2375}
           
       - name: Setup WSL
