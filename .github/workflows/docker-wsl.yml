@@ -14,7 +14,7 @@ jobs:
       - name: Expose Docker Daemon
         run: |
           Stop-Process -Name dockerd -Force
-          Start-Job -ScriptBlock{dockerd -H tcp://localhost}
+          dockerd -H tcp://localhost:2375
           
       - name: Setup WSL
         uses: Vampire/setup-wsl@v1.1.0
